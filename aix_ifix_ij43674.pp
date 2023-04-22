@@ -5,7 +5,7 @@
 #
 #-------------------------------------------------------------------------------
 #
-class profile::aix_ifix_ij43674 {
+class aix_ifix_ij43674 {
 
     #  Make sure we can get to the ::staging module (deprecated ?)
     include ::staging
@@ -17,7 +17,7 @@ class profile::aix_ifix_ij43674 {
         $ifixName = 'IJ43674'
 
         #  Make sure we create/manage the ifix staging directory
-        require profile::aix_file_opt_ifixes
+        require aix_file_opt_ifixes
 
         #
         #  For now, we're skipping anything that reads as a VIO server.
@@ -48,7 +48,7 @@ class profile::aix_ifix_ij43674 {
                 unless ($ifixFullName in $::facts['aix_ifix']['hash'].keys) {
  
                     #  Build up the complete name of the ifix staging source and target
-                    $ifixStagingSource = "puppet:///modules/profile/${ifixName}${ifixSuffix}.${ifixBuildDate}.epkg.Z"
+                    $ifixStagingSource = "puppet:///modules/aix_ifix_ij43674/${ifixName}${ifixSuffix}.${ifixBuildDate}.epkg.Z"
                     $ifixStagingTarget = "/opt/ifixes/${ifixName}${ifixSuffix}.${ifixBuildDate}.epkg.Z"
 
                     #  Stage it
